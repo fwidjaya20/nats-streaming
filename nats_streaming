@@ -1,0 +1,16 @@
+#!/usr/bin/env docker.sh
+
+name=nats_streaming
+image=nats-streaming:latest
+opts="
+	-p 4222:4222
+	-p 8222:8222
+"
+args="
+	-st SQL
+	-msu 0
+	-mm 0
+	-mb 0
+	--sql_driver postgres
+	--sql_source 'postgres://postgres:password@172.17.0.2:5432/nats_persistence?sslmode=disable'
+"
